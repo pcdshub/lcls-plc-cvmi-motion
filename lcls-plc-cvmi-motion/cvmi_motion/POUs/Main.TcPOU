@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="Main" Id="{3f08c9da-acd6-4059-bcf8-867945acb3ea}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
@@ -47,8 +47,8 @@ VAR
     '}
     M6 : DUT_MotionStage := (bPowerSelf:=TRUE); // Gas Needle Z
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1'}
     {attribute 'pytmc' := '
         pv: TMO:CVMI:MMS:07
     '}
@@ -62,19 +62,19 @@ VAR
     '}
     M8 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF X
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 1'}
-    {attribute 'pytmc' := '
-        pv: TMO:KTOF:MMS:02
-    '}
-    M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
-
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 1'}
     {attribute 'pytmc' := '
         pv: TMO:KTOF:MMS:03
     '}
-    M10 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Z
+    M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Z
+
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 1'}
+    {attribute 'pytmc' := '
+        pv: TMO:KTOF:MMS:02
+    '}
+    M10 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
 
     // CVMI Axes
     fbMotionStageM1 : FB_MotionStage;
@@ -90,6 +90,7 @@ VAR
     fbMotionStageM10 : FB_MotionStage;
 
     //persistent data
+	fbStartDelay		  : TON;
     fbWritePersistentData : WritePersistentData;
     bInit : BOOL := TRUE;
     fbWriteDelay : TON;
@@ -110,7 +111,8 @@ VAR PERSISTENT
     fKTOF_ZPos : LREAL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[fbStartDelay(IN:=TRUE, PT:=T#1s);
+IF bInit AND fbStartDelay.Q THEN
     //Sets axes position with persistent value
     // CVMI
     mcSetPosition[1](Axis:=M1.Axis, Position:=fGasJetXPos, Mode:=FALSE, Execute:=TRUE);
@@ -122,8 +124,8 @@ END_VAR]]></Declaration>
     mcSetPosition[7](Axis:=M7.Axis, Position:=fSamplePaddlePos, Mode:=FALSE, Execute:=TRUE);
     // KTOF
     mcSetPosition[8](Axis:=M8.Axis, Position:=fKTOF_XPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
+    mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
+    mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
     if (mcSetPosition[1].Done and NOT mcSetPosition[1].Error) AND (mcSetPosition[2].Done and NOT mcSetPosition[2].Error)
         AND (mcSetPosition[3].Done and NOT mcSetPosition[3].Error) AND (mcSetPosition[4].Done and NOT mcSetPosition[4].Error)
         AND (mcSetPosition[5].Done and NOT mcSetPosition[5].Error) AND (mcSetPosition[6].Done and NOT mcSetPosition[6].Error)
@@ -141,7 +143,7 @@ END_VAR]]></Declaration>
         mcSetPosition[9](Axis:=M9.Axis, Execute:=FALSE);
         mcSetPosition[10](Axis:=M10.Axis, Execute:=FALSE);
     END_IF
-ELSE
+ELSIF (fbStartDelay.Q) THEN
     // Hardware Enable
     // CVMI
     // Gas Jet
@@ -187,8 +189,8 @@ ELSE
     fSamplePaddlePos := M7.Axis.NcToPlc.ActPos;
     // KTOF
     fKTOF_XPos := M8.Axis.NcToPlc.ActPos;
-    fKTOF_YPos := M9.Axis.NcToPlc.ActPos;
-    fKTOF_ZPos := M10.Axis.NcToPlc.ActPos;
+    fKTOF_ZPos := M9.Axis.NcToPlc.ActPos;
+    fKTOF_YPos := M10.Axis.NcToPlc.ActPos;
 
     IF fbWriteDelay.Q THEN
         fbWritePersistentData(NETID:='', PORT:=851, START:=TRUE, TMOUT:=T#1S);
@@ -197,7 +199,16 @@ ELSE
         fbWritePersistentData(START:=FALSE);
         fbWriteDelay(IN:=TRUE, PT:=T#0.5S);
     END_IF
+	
+	//temporary fix for GasNeedleZ until broken limit switch fixed
+	//M6.bLimitBackwardEnable := TRUE; 	//<--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
+	//M6.bAllBackwardEnable	:= TRUE;	//<--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
+	
 END_IF;]]></ST>
     </Implementation>
+    <LineIds Name="Main">
+      <LineId Id="3" Count="92" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

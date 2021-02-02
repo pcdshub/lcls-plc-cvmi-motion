@@ -18,10 +18,10 @@
 		<Box File="KTOF_X-EL7041.xti" Id="37">
 			<EtherCAT PortABoxInfo="#x01000024"/>
 		</Box>
-		<Box File="KTOF_Y-EL7041.xti" Id="38">
+		<Box File="KTOF_Z-EL7041.xti" Id="38">
 			<EtherCAT PortABoxInfo="#x01000025"/>
 		</Box>
-		<Box File="KTOF_Z-EL7041.xti" Id="39">
+		<Box File="KTOF_Y-EL7041.xti" Id="39">
 			<EtherCAT PortABoxInfo="#x01000026"/>
 		</Box>
 		<Box File="END-EL9011.xti" Id="40">
