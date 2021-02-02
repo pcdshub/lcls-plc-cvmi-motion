@@ -62,19 +62,19 @@ VAR
     '}
     M8 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF X
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 2'}
-    {attribute 'pytmc' := '
-        pv: TMO:KTOF:MMS:02
-    '}
-    M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
-
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
+        pv: TMO:KTOF:MMS:02
+    '}
+    M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Z
+
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 2'}
+    {attribute 'pytmc' := '
         pv: TMO:KTOF:MMS:03
     '}
-    M10 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Z
+    M10 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
 
     // CVMI Axes
     fbMotionStageM1 : FB_MotionStage;
@@ -124,8 +124,8 @@ IF bInit AND fbStartDelay.Q THEN
     mcSetPosition[7](Axis:=M7.Axis, Position:=fSamplePaddlePos, Mode:=FALSE, Execute:=TRUE);
     // KTOF
     mcSetPosition[8](Axis:=M8.Axis, Position:=fKTOF_XPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
+    mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
+    mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
     if (mcSetPosition[1].Done and NOT mcSetPosition[1].Error) AND (mcSetPosition[2].Done and NOT mcSetPosition[2].Error)
         AND (mcSetPosition[3].Done and NOT mcSetPosition[3].Error) AND (mcSetPosition[4].Done and NOT mcSetPosition[4].Error)
         AND (mcSetPosition[5].Done and NOT mcSetPosition[5].Error) AND (mcSetPosition[6].Done and NOT mcSetPosition[6].Error)
@@ -189,8 +189,8 @@ ELSIF (fbStartDelay.Q) THEN
     fSamplePaddlePos := M7.Axis.NcToPlc.ActPos;
     // KTOF
     fKTOF_XPos := M8.Axis.NcToPlc.ActPos;
-    fKTOF_YPos := M9.Axis.NcToPlc.ActPos;
-    fKTOF_ZPos := M10.Axis.NcToPlc.ActPos;
+    fKTOF_ZPos := M9.Axis.NcToPlc.ActPos;
+    fKTOF_YPos := M10.Axis.NcToPlc.ActPos;
 
     IF fbWriteDelay.Q THEN
         fbWritePersistentData(NETID:='', PORT:=851, START:=TRUE, TMOUT:=T#1S);
