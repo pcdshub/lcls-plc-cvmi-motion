@@ -65,14 +65,14 @@ VAR
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
-        pv: TMO:KTOF:MMS:02
+        pv: TMO:KTOF:MMS:03
     '}
     M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Z
 
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[KTOF_Y-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
-        pv: TMO:KTOF:MMS:03
+        pv: TMO:KTOF:MMS:02
     '}
     M10 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
 
@@ -201,9 +201,14 @@ ELSIF (fbStartDelay.Q) THEN
     END_IF
 	
 	//temporary fix for GasNeedleZ until broken limit switch fixed
-	//M6.bLimitBackwardEnable := TRUE; <--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
+	//M6.bLimitBackwardEnable := TRUE; 	//<--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
+	//M6.bAllBackwardEnable	:= TRUE;	//<--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
 	
 END_IF;]]></ST>
     </Implementation>
+    <LineIds Name="Main">
+      <LineId Id="3" Count="92" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
