@@ -69,8 +69,8 @@ VAR
     '}
     M9 : DUT_MotionStage := (bPowerSelf:=TRUE); // KTOF Y
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 1'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable:=TIIB[KTOF_Z-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
         pv: TMO:KTOF:MMS:03
     '}
@@ -199,6 +199,10 @@ ELSIF (fbStartDelay.Q) THEN
         fbWritePersistentData(START:=FALSE);
         fbWriteDelay(IN:=TRUE, PT:=T#0.5S);
     END_IF
+	
+	//temporary fix for GasNeedleZ until broken limit switch fixed
+	//M6.bLimitBackwardEnable := TRUE; <--- Does not work for bypass. Instead FORCE INPUT to 1 in the IO TREE.
+	
 END_IF;]]></ST>
     </Implementation>
   </POU>
