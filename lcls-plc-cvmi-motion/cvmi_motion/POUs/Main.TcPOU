@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="Main" Id="{3f08c9da-acd6-4059-bcf8-867945acb3ea}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
@@ -121,15 +121,23 @@ END_VAR]]></Declaration>
     mcSetPosition[6](Axis:=M6.Axis, Position:=fGasNeedleZPos, Mode:=FALSE, Execute:=TRUE);
     mcSetPosition[7](Axis:=M7.Axis, Position:=fSamplePaddlePos, Mode:=FALSE, Execute:=TRUE);
     // KTOF
-    mcSetPosition[8](Axis:=M8.Axis, Position:=fKTOF_XPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
-    mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
-    if (mcSetPosition[1].Done and NOT mcSetPosition[1].Error) AND (mcSetPosition[2].Done and NOT mcSetPosition[2].Error)
+    //mcSetPosition[8](Axis:=M8.Axis, Position:=fKTOF_XPos, Mode:=FALSE, Execute:=TRUE);
+    //mcSetPosition[9](Axis:=M9.Axis, Position:=fKTOF_YPos, Mode:=FALSE, Execute:=TRUE);
+    //mcSetPosition[10](Axis:=M10.Axis, Position:=fKTOF_ZPos, Mode:=FALSE, Execute:=TRUE);
+    IF (mcSetPosition[1].Done and NOT mcSetPosition[1].Error) AND (mcSetPosition[2].Done and NOT mcSetPosition[2].Error)
         AND (mcSetPosition[3].Done and NOT mcSetPosition[3].Error) AND (mcSetPosition[4].Done and NOT mcSetPosition[4].Error)
         AND (mcSetPosition[5].Done and NOT mcSetPosition[5].Error) AND (mcSetPosition[6].Done and NOT mcSetPosition[6].Error)
-        AND (mcSetPosition[7].Done and NOT mcSetPosition[7].Error) AND (mcSetPosition[8].Done and NOT mcSetPosition[8].Error)
-        AND (mcSetPosition[9].Done and NOT mcSetPosition[9].Error) AND (mcSetPosition[10].Done and NOT mcSetPosition[10].Error) THEN
+        AND (mcSetPosition[7].Done and NOT mcSetPosition[7].Error)// AND (mcSetPosition[8].Done and NOT mcSetPosition[8].Error)
+        //AND (mcSetPosition[9].Done and NOT mcSetPosition[9].Error) AND (mcSetPosition[10].Done and NOT mcSetPosition[10].Error)
+    THEN
         bInit:=FALSE;
+    END_IF
+    IF (mcSetPosition[1].Done) AND (mcSetPosition[2].Done)
+        AND (mcSetPosition[3].Done) AND (mcSetPosition[4].Done)
+        AND (mcSetPosition[5].Done) AND (mcSetPosition[6].Done)
+        AND (mcSetPosition[7].Done)// AND (mcSetPosition[8].Done)
+        //AND (mcSetPosition[9].Done) AND (mcSetPosition[10].Done)
+    THEN
         mcSetPosition[1](Axis:=M1.Axis, Execute:=FALSE);
         mcSetPosition[2](Axis:=M2.Axis, Execute:=FALSE);
         mcSetPosition[3](Axis:=M3.Axis, Execute:=FALSE);
@@ -137,9 +145,9 @@ END_VAR]]></Declaration>
         mcSetPosition[5](Axis:=M5.Axis, Execute:=FALSE);
         mcSetPosition[6](Axis:=M6.Axis, Execute:=FALSE);
         mcSetPosition[7](Axis:=M7.Axis, Execute:=FALSE);
-        mcSetPosition[8](Axis:=M8.Axis, Execute:=FALSE);
-        mcSetPosition[9](Axis:=M9.Axis, Execute:=FALSE);
-        mcSetPosition[10](Axis:=M10.Axis, Execute:=FALSE);
+        //mcSetPosition[8](Axis:=M8.Axis, Execute:=FALSE);
+        //mcSetPosition[9](Axis:=M9.Axis, Execute:=FALSE);
+        //mcSetPosition[10](Axis:=M10.Axis, Execute:=FALSE);
     END_IF
 ELSE
     // Hardware Enable
@@ -155,9 +163,9 @@ ELSE
     // Sample Paddle
     M7.bHardwareEnable := TRUE;
     // KTOF
-    M8.bHardwareEnable := TRUE;
-    M9.bHardwareEnable := TRUE;
-    M10.bHardwareEnable	:= TRUE;
+    //M8.bHardwareEnable := TRUE;
+    //M9.bHardwareEnable := TRUE;
+    //M10.bHardwareEnable	:= TRUE;
 
     // fbMotionStage
     // CVMI
@@ -172,9 +180,9 @@ ELSE
     // Sample Paddle
     fbMotionStageM7(stMotionStage:=M7);
     // KTOF
-    fbMotionStageM8(stMotionStage:=M8);
-    fbMotionStageM9(stMotionStage:=M9);
-    fbMotionStageM10(stMotionStage:=M10);
+    //fbMotionStageM8(stMotionStage:=M8);
+    //fbMotionStageM9(stMotionStage:=M9);
+    //fbMotionStageM10(stMotionStage:=M10);
 
     //Keep track of position
     // CVMI
@@ -186,16 +194,16 @@ ELSE
     fGasNeedleZPos := M6.Axis.NcToPlc.ActPos;
     fSamplePaddlePos := M7.Axis.NcToPlc.ActPos;
     // KTOF
-    fKTOF_XPos := M8.Axis.NcToPlc.ActPos;
-    fKTOF_YPos := M9.Axis.NcToPlc.ActPos;
-    fKTOF_ZPos := M10.Axis.NcToPlc.ActPos;
+    //fKTOF_XPos := M8.Axis.NcToPlc.ActPos;
+    //fKTOF_YPos := M9.Axis.NcToPlc.ActPos;
+    //fKTOF_ZPos := M10.Axis.NcToPlc.ActPos;
 
     IF fbWriteDelay.Q THEN
         fbWritePersistentData(NETID:='', PORT:=851, START:=TRUE, TMOUT:=T#1S);
         fbWriteDelay(IN:=FALSE);
     ELSE
         fbWritePersistentData(START:=FALSE);
-        fbWriteDelay(IN:=TRUE, PT:=T#0.5S);
+        fbWriteDelay(IN:=TRUE, PT:=T#60S);
     END_IF
 END_IF;]]></ST>
     </Implementation>
