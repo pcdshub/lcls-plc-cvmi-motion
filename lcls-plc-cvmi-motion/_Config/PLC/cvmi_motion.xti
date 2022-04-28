@@ -2584,18 +2584,6 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M6.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M6.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Coupler01-EK1100^Junction01-EK1122-0080^Coupler02-EK1101-0080^KTOF_X-EL7041">
-				<Link VarA="PlcTask Inputs^Main.M8.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M8.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Coupler01-EK1100^Junction01-EK1122-0080^Coupler02-EK1101-0080^KTOF_Y-EL7041">
-				<Link VarA="PlcTask Inputs^Main.M9.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M9.bLimitForwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Coupler01-EK1100^Junction01-EK1122-0080^Coupler02-EK1101-0080^KTOF_Z-EL7041">
-				<Link VarA="PlcTask Inputs^Main.M10.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M10.bLimitForwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Coupler01-EK1100^SamplePaddle-EL7041">
 				<Link VarA="PlcTask Inputs^Main.M7.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M7.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -2623,6 +2611,18 @@ External Setpoint Generation:
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^GasNeedleZ">
 				<Link VarA="PlcTask Inputs^Main.M6.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M6.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^KTOF_X">
+				<Link VarA="PlcTask Inputs^Main.M8.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M8.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^KTOF_Y">
+				<Link VarA="PlcTask Inputs^Main.M9.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M9.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^KTOF_Z">
+				<Link VarA="PlcTask Inputs^Main.M10.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M10.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^SamplePaddle">
 				<Link VarA="PlcTask Inputs^Main.M7.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
