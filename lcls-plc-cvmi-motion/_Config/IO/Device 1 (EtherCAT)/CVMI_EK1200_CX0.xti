@@ -10,8 +10,14 @@
 		<Box File="CVMI_EL2202_E1.xti" Id="2">
 			<EtherCAT PortABoxInfo="#x01000001"/>
 		</Box>
-		<Box File="CVMI_EL6070_E2.xti" Id="3">
+		<Box File="LED_CH1-2_EL2502.xti" Id="20">
 			<EtherCAT PortABoxInfo="#x01000002"/>
+		</Box>
+		<Box File="LED_CH3-4_EL2502.xti" Id="21">
+			<EtherCAT PortABoxInfo="#x01000014"/>
+		</Box>
+		<Box File="CVMI_EL6070_E2.xti" Id="3">
+			<EtherCAT PortABoxInfo="#x01000015"/>
 		</Box>
 		<Box File="Bridge01_E3.xti" Id="4">
 			<EtherCAT PortABoxInfo="#x01000003"/>

@@ -118,6 +118,37 @@ VAR
     fbMotionStageM8 : FB_MotionStage;
     fbMotionStageM9 : FB_MotionStage;
     fbMotionStageM10 : FB_MotionStage;
+	
+	
+	// LED Channels
+	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIID^Device 1 (EtherCAT)^CVMI_EK1200_CX0^LED_CH1-2_EL2502^PWM Outputs Channel 1^PWM output'}
+    {attribute 'pytmc' := '
+		pv: CVMI:LED:01
+		io: io
+	'}
+    bLedOutput1 : FB_LED;
+	
+	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIID^Device 1 (EtherCAT)^CVMI_EK1200_CX0^LED_CH1-2_EL2502^PWM Outputs Channel 2^PWM output'}
+    {attribute 'pytmc' := '
+		pv: CVMI:LED:02
+		io: io
+	'}
+    bLedOutput2 : FB_LED;
+	
+	
+	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIID^Device 1 (EtherCAT)^CVMI_EK1200_CX0^LED_CH3-4_EL2502^PWM Outputs Channel 1^PWM output'}
+    {attribute 'pytmc' := '
+		pv: CVMI:LED:03
+		io: io
+	'}
+    bLedOutput3 : FB_LED;
+
+    {attribute 'TcLinkTo' := '.iIlluminatorINT := TIID^Device 1 (EtherCAT)^CVMI_EK1200_CX0^LED_CH3-4_EL2502^PWM Outputs Channel 2^PWM output'}
+    {attribute 'pytmc' := '
+		pv: CVMI:LED:04
+		io: io
+	'}
+    bLedOutput4 : FB_LED;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[    // Hardware Enable
@@ -152,7 +183,14 @@ END_VAR]]></Declaration>
     // KTOF
     fbMotionStageM8(stMotionStage:=M8);
     fbMotionStageM9(stMotionStage:=M9);
-    fbMotionStageM10(stMotionStage:=M10);]]></ST>
+    fbMotionStageM10(stMotionStage:=M10);
+	
+	
+// Set LED output scaling
+	bLedOutput1.iTermBits := 14;
+	bLedOutput2.iTermBits := 14;
+	bLedOutput3.iTermBits := 14;
+	bLedOutput4.iTermBits := 14;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
