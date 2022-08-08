@@ -1355,13 +1355,8 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="4">
-			<EncPara ScaleFactorNumerator="7.8125e-05" MaxCount="#x0000ffff">
-				<SoftEndMinControl Enable="true"/>
-				<SoftEndMaxControl Enable="true" Range="13"/>
+			<EncPara ScaleFactorNumerator="9.375e-05" MaxCount="#x0000ffff">
 				<Inc RefSoftSyncMask="#x0000ffff"/>
-				<ParameterChanged>14</ParameterChanged>
-				<ParameterChanged>11</ParameterChanged>
-				<ParameterChanged>12</ParameterChanged>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
@@ -1430,7 +1425,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="10" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="12" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">

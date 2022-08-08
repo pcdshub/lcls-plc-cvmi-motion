@@ -7,22 +7,22 @@
 		<Name>__FILENAME__</Name>
 		<ImageId>1000</ImageId>
 		<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100"/>
-		<Box File="GasJetX-EL7041.xti" Id="7">
+		<Box File="GasNeedleX-EL7041.xti" Id="7">
 			<EtherCAT PortABoxInfo="#x01000013"/>
 		</Box>
-		<Box File="GasJetY-EL7041.xti" Id="8">
+		<Box File="GasNeedleY-EL7041.xti" Id="8">
 			<EtherCAT PortABoxInfo="#x01000007"/>
 		</Box>
-		<Box File="GasJetZ-EL7041.xti" Id="9">
+		<Box File="GasNeedleZ-EL7041.xti" Id="9">
 			<EtherCAT PortABoxInfo="#x01000008"/>
 		</Box>
-		<Box File="GasNeedleX-EL7041.xti" Id="10">
+		<Box File="GasJetY-EL7041.xti" Id="10">
 			<EtherCAT PortABoxInfo="#x01000009"/>
 		</Box>
-		<Box File="GasNeedleY-EL7041.xti" Id="11">
+		<Box File="GasJetX-EL7041.xti" Id="11">
 			<EtherCAT PortABoxInfo="#x0100000a"/>
 		</Box>
-		<Box File="GasNeedleZ-EL7041.xti" Id="12">
+		<Box File="GasJetZ-EL7041.xti" Id="12">
 			<EtherCAT PortABoxInfo="#x0100000b"/>
 		</Box>
 		<Box File="SamplePaddle-EL7041.xti" Id="13">
