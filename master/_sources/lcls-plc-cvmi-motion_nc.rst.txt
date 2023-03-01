@@ -38,9 +38,7 @@ Axis 1: GasJetX
     Enc:Inverse, true
     Enc:MaxCount, #x0000ffff
     Enc:ScaleFactorNumerator, 3.90625e-05
-    Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 16.1
-    Enc:SoftEndMinControl:Enable, true
     Id, 1
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 1
@@ -64,10 +62,8 @@ Axis 2: GasJetY
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 3.90625e-05
-    Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 82.2
-    Enc:SoftEndMinControl:Enable, true
+    Enc:ScaleFactorNumerator, 9.375e-05
+    Enc:SoftEndMaxControl:Range, 99.3
     Id, 2
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 1
@@ -92,9 +88,7 @@ Axis 3: GasJetZ
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
     Enc:ScaleFactorNumerator, 9.375e-05
-    Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 29.4
-    Enc:SoftEndMinControl:Enable, true
     Id, 3
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 1
@@ -220,6 +214,7 @@ Axis 8: KTOF_X
     Name, KTOF_X
     AxisType, 1
     CreateSymbols, true
+    Disabled, true
     Dynamic:Acceleration, 2
     Dynamic:Deceleration, 2
     Dynamic:DelayTime, 0.008
@@ -247,6 +242,7 @@ Axis 9: KTOF_Y
     Name, KTOF_Y
     AxisType, 1
     CreateSymbols, true
+    Disabled, true
     Dynamic:Acceleration, 2
     Dynamic:Deceleration, 2
     Dynamic:DelayTime, 0.008
@@ -275,6 +271,7 @@ Axis 10: KTOF_Z
     Name, KTOF_Z
     AxisType, 1
     CreateSymbols, true
+    Disabled, true
     Dynamic:Acceleration, 2
     Dynamic:Deceleration, 2
     Dynamic:DelayTime, 0.008

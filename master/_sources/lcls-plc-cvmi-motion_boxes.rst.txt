@@ -2773,6 +2773,196 @@ Coupler01-EK1100
    </details>
 
 
+LED_CH1-2_EL2502
+^^^^^^^^^^^^^^^^
+
+
+.. raw:: html
+
+   <details>
+        <summary>EtherCAT (6 PDOs)</summary>
+
+.. csv-table:: Basic Settings
+    :header: Name, Data
+    :align: center
+
+    Name, LED_CH1-2_EL2502
+    ID, 20
+        BootStrapData, 0010f400f410f400
+        SyncMan, 001080002600010001000000800080008000001026010000
+        SyncMan, 801080002200010002000000800080008000801022010000
+        SyncMan, 001104002400010003000000000000000400001124010000
+        SyncMan, 801100000000000004000000000000000000801100000000
+        Fmmu, 0000000000000000001100020100000001000000000000000000000000000000
+        Fmmu, 00000000000000000d0800010100000003000000000000000000000000000000
+        CoeProfile, 16389001
+        CoeProfile, 16389001
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1600, Flags #x0010, SyncMan 2)
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1601, Flags #x0010, SyncMan 2)
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1602, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+        "PWM period", "", , "#x7000", "UINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1603, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+        "PWM period", "", , "#x7010", "UINT"
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1604, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+        "PWM period 1Hz", "", , "#x7000", "UDINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1605, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+        "PWM period 1Hz", "", , "#x7010", "UDINT"
+
+
+.. raw:: html
+
+   </details>
+
+
+LED_CH3-4_EL2502
+^^^^^^^^^^^^^^^^
+
+
+.. raw:: html
+
+   <details>
+        <summary>EtherCAT (6 PDOs)</summary>
+
+.. csv-table:: Basic Settings
+    :header: Name, Data
+    :align: center
+
+    Name, LED_CH3-4_EL2502
+    ID, 21
+        BootStrapData, 0010f400f410f400
+        SyncMan, 001080002600010001000000800080008000001026010000
+        SyncMan, 801080002200010002000000800080008000801022010000
+        SyncMan, 001104002400010003000000000000000400001124010000
+        SyncMan, 801100000000000004000000000000000000801100000000
+        Fmmu, 0000000000000000001100020100000001000000000000000000000000000000
+        Fmmu, 00000000000000000d0800010100000003000000000000000000000000000000
+        CoeProfile, 16389001
+        CoeProfile, 16389001
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1600, Flags #x0010, SyncMan 2)
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1601, Flags #x0010, SyncMan 2)
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1602, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+        "PWM period", "", , "#x7000", "UINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1603, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+        "PWM period", "", , "#x7010", "UINT"
+
+
+
+PDO PWM Outputs Channel 1 (Index #x1604, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7000", "UINT"
+        "PWM period 1Hz", "", , "#x7000", "UDINT"
+
+
+
+PDO PWM Outputs Channel 2 (Index #x1605, Flags #x0010, SyncMan )
+
+.. csv-table::
+    :header: Name, Comment, BitLen, Index, Type
+    :align: center
+
+        "PWM output", "", , "#x7010", "UINT"
+        "PWM period 1Hz", "", , "#x7010", "UDINT"
+
+
+.. raw:: html
+
+   </details>
+
+
 Junction01-EK1122-0080
 ^^^^^^^^^^^^^^^^^^^^^^
 
