@@ -26,5 +26,6 @@
 		<Axis File="KTOF_X.xti" Id="8"/>
 		<Axis File="KTOF_Y.xti" Id="9"/>
 		<Axis File="KTOF_Z.xti" Id="10"/>
+		<Axis File="SamplePaddle_1.xti" Id="11"/>
 	</NC>
 </TcSmItem>
