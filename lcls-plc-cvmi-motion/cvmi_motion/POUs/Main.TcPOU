@@ -65,9 +65,18 @@ VAR
 //    nEnableMode:=ENUM_StageEnableMode.ALWAYS,
     nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Gas Needle Z
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
+ (*   {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
+        pv: TMO:CVMI:MMS:07
+    '}
+    M7 : DUT_MotionStage := (bPowerSelf:=TRUE,
+    nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+//    nEnableMode:=ENUM_StageEnableMode.ALWAYS,
+    nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Sample Paddle
+*)
+//air attenuator experiment setup axis 7 without limit switches and rotation motor 01/2025
+ {attribute 'pytmc' := '
         pv: TMO:CVMI:MMS:07
     '}
     M7 : DUT_MotionStage := (bPowerSelf:=TRUE,
@@ -163,6 +172,10 @@ END_VAR]]></Declaration>
     M6.bHardwareEnable := TRUE;
     // Sample Paddle
     M7.bHardwareEnable := TRUE;
+    //air attenuator experiment uses M7 as rotation motor without limit switches 01/2025
+    M7.bLimitBackwardEnable := TRUE;
+    M7.bLimitForwardEnable := TRUE;
+
     // KTOF
     M8.bHardwareEnable := TRUE;
     M9.bHardwareEnable := TRUE;

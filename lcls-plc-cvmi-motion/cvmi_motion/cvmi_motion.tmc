@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{4B0F9DF6-1ED0-2694-DBA1-1DB132A82419}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{36C55FFE-E817-F01A-F5C4-37E7F622F297}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="Tc2_System">T_AmsNetID</Name>
@@ -47101,7 +47101,18 @@ External Setpoint Generation:
           </Symbol>
           <Symbol>
             <Name>Main.M7</Name>
-            <Comment> Gas Needle Z</Comment>
+            <Comment> Gas Needle Z
+   {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2'}
+    {attribute 'pytmc' := '
+        pv: TMO:CVMI:MMS:07
+    '}
+    M7 : DUT_MotionStage := (bPowerSelf:=TRUE,
+    nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+//    nEnableMode:=ENUM_StageEnableMode.ALWAYS,
+    nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Sample Paddle
+
+air attenuator experiment setup axis 7 without limit switches and rotation motor 01/2025</Comment>
             <BitSize>25984</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -47119,11 +47130,6 @@ External Setpoint Generation:
               </SubItem>
             </Default>
             <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2</Value>
-              </Property>
               <Property>
                 <Name>pytmc</Name>
                 <Value>
@@ -47312,9 +47318,9 @@ External Setpoint Generation:
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-		pv: TMO:CVMI:LED:01
-		io: io
-	</Value>
+        pv: TMO:CVMI:LED:01
+        io: io
+    </Value>
               </Property>
             </Properties>
             <BitOffs>638933632</BitOffs>
@@ -47331,9 +47337,9 @@ External Setpoint Generation:
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-		pv: TMO:CVMI:LED:02
-		io: io
-	</Value>
+        pv: TMO:CVMI:LED:02
+        io: io
+    </Value>
               </Property>
             </Properties>
             <BitOffs>638935040</BitOffs>
@@ -47350,9 +47356,9 @@ External Setpoint Generation:
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-		pv: TMO:CVMI:LED:03
-		io: io
-	</Value>
+        pv: TMO:CVMI:LED:03
+        io: io
+    </Value>
               </Property>
             </Properties>
             <BitOffs>638936448</BitOffs>
@@ -47369,9 +47375,9 @@ External Setpoint Generation:
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-		pv: TMO:CVMI:LED:04
-		io: io
-	</Value>
+        pv: TMO:CVMI:LED:04
+        io: io
+    </Value>
               </Property>
             </Properties>
             <BitOffs>638937856</BitOffs>
@@ -48085,7 +48091,7 @@ External Setpoint Generation:
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2025-01-10T14:28:16</Value>
+          <Value>2025-01-21T15:09:27</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
