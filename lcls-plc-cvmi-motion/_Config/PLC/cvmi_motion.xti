@@ -984,6 +984,13 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>Main.M1.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M2.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1080,6 +1087,13 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M2.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M3.Axis.NcToPlc</Name>
@@ -1180,6 +1194,13 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>Main.M3.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M4.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1276,6 +1297,13 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M4.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M5.Axis.NcToPlc</Name>
@@ -1376,6 +1404,13 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>Main.M5.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M6.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1472,6 +1507,13 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M6.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M7.Axis.NcToPlc</Name>
@@ -1572,6 +1614,13 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>Main.M7.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M8.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1668,6 +1717,13 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M8.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M9.Axis.NcToPlc</Name>
@@ -1768,6 +1824,13 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>Main.M9.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M10.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1864,6 +1927,13 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M10.nRawEncoderDINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]>
+					</Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.fbMotionStageM1.fbDriveVirtual.MasterAxis.NcToPlc</Name>
