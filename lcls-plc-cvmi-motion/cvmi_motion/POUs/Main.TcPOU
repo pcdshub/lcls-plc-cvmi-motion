@@ -65,9 +65,18 @@ VAR
 //    nEnableMode:=ENUM_StageEnableMode.ALWAYS,
     nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Gas Needle Z
 
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
+ (*   {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
+        pv: TMO:CVMI:MMS:07
+    '}
+    M7 : DUT_MotionStage := (bPowerSelf:=TRUE,
+    nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+//    nEnableMode:=ENUM_StageEnableMode.ALWAYS,
+    nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Sample Paddle
+*)
+//air attenuator experiment setup axis 7 without limit switches and rotation motor 01/2025
+ {attribute 'pytmc' := '
         pv: TMO:CVMI:MMS:07
     '}
     M7 : DUT_MotionStage := (bPowerSelf:=TRUE,
@@ -118,36 +127,36 @@ VAR
     fbMotionStageM8 : FB_MotionStage;
     fbMotionStageM9 : FB_MotionStage;
     fbMotionStageM10 : FB_MotionStage;
-	
-	
-	// LED Channels
-	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 1^PWM output'}
+
+
+    // LED Channels
+    {attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 1^PWM output'}
     {attribute 'pytmc' := '
-		pv: TMO:CVMI:LED:01
-		io: io
-	'}
+        pv: TMO:CVMI:LED:01
+        io: io
+    '}
     bLedOutput1 : FB_LED;
-	
-	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 2^PWM output'}
+
+    {attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 2^PWM output'}
     {attribute 'pytmc' := '
-		pv: TMO:CVMI:LED:02
-		io: io
-	'}
+        pv: TMO:CVMI:LED:02
+        io: io
+    '}
     bLedOutput2 : FB_LED;
-	
-	
-	{attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH3-4_EL2502]^PWM Outputs Channel 1^PWM output'}
+
+
+    {attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH3-4_EL2502]^PWM Outputs Channel 1^PWM output'}
     {attribute 'pytmc' := '
-		pv: TMO:CVMI:LED:03
-		io: io
-	'}
+        pv: TMO:CVMI:LED:03
+        io: io
+    '}
     bLedOutput3 : FB_LED;
 
     {attribute 'TcLinkTo' := '.iIlluminatorINT := TIIB[LED_CH3-4_EL2502]^PWM Outputs Channel 2^PWM output'}
     {attribute 'pytmc' := '
-		pv: TMO:CVMI:LED:04
-		io: io
-	'}
+        pv: TMO:CVMI:LED:04
+        io: io
+    '}
     bLedOutput4 : FB_LED;
 END_VAR]]></Declaration>
     <Implementation>
@@ -163,6 +172,10 @@ END_VAR]]></Declaration>
     M6.bHardwareEnable := TRUE;
     // Sample Paddle
     M7.bHardwareEnable := TRUE;
+    //air attenuator experiment uses M7 as rotation motor without limit switches 01/2025
+    M7.bLimitBackwardEnable := TRUE;
+    M7.bLimitForwardEnable := TRUE;
+
     // KTOF
     M8.bHardwareEnable := TRUE;
     M9.bHardwareEnable := TRUE;
@@ -184,13 +197,13 @@ END_VAR]]></Declaration>
     fbMotionStageM8(stMotionStage:=M8);
     fbMotionStageM9(stMotionStage:=M9);
     fbMotionStageM10(stMotionStage:=M10);
-	
-	
+
+
 // Set LED output scaling
-	bLedOutput1.iTermBits := 14;
-	bLedOutput2.iTermBits := 14;
-	bLedOutput3.iTermBits := 14;
-	bLedOutput4.iTermBits := 14;]]></ST>
+    bLedOutput1.iTermBits := 14;
+    bLedOutput2.iTermBits := 14;
+    bLedOutput3.iTermBits := 14;
+    bLedOutput4.iTermBits := 14;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
