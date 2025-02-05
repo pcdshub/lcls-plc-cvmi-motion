@@ -7,6 +7,7 @@ lcls-plc-cvmi-motion
 
     lcls-plc-cvmi-motion_pragmas
     lcls-plc-cvmi-motion_nc
+    lcls-plc-cvmi-motion_ethercat
     lcls-plc-cvmi-motion_boxes
     lcls-plc-cvmi-motion_links
 

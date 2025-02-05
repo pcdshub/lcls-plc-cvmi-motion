@@ -37,10 +37,12 @@ Axis 1: GasJetX
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:Inverse, true
     Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 3.90625e-05
+    Enc:ScaleFactorNumerator, 7.8125e-05
     Enc:SoftEndMaxControl:Range, 16.1
     Id, 1
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.01
+    TargetPosControl:Time, 0.1
     Velo:Maximum, 1
 
 
@@ -62,10 +64,12 @@ Axis 2: GasJetY
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 9.375e-05
+    Enc:ScaleFactorNumerator, 9.921875e-05
     Enc:SoftEndMaxControl:Range, 99.3
     Id, 2
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.01
+    TargetPosControl:Time, 0.1
     Velo:Maximum, 1
 
 
@@ -87,10 +91,12 @@ Axis 3: GasJetZ
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 9.375e-05
+    Enc:ScaleFactorNumerator, 8.59375e-05
     Enc:SoftEndMaxControl:Range, 29.4
     Id, 3
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.01
+    TargetPosControl:Time, 0.1
     Velo:Maximum, 1
 
 
@@ -118,6 +124,7 @@ Axis 4: GasNeedleX
     Enc:SoftEndMinControl:Enable, true
     Id, 4
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 1
     Velo:Maximum, 1
 
 
@@ -188,18 +195,23 @@ Axis 7: SamplePaddle
     Name, SamplePaddle
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 2
-    Dynamic:Deceleration, 2
+    Dynamic:Acceleration, 64.5934
+    Dynamic:AccelerationMaximum, 100
+    Dynamic:Deceleration, 64.5934
+    Dynamic:DecelerationMaximum, 100
     Dynamic:DelayTime, 0.008
+    Dynamic:Jerk, 417.23
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 7.8125e-05
+    Enc:Offset, -7.78125
+    Enc:ScaleFactorNumerator, 0.0003125
     Enc:SoftEndMaxControl:Range, 2
     Enc:SoftEndMinControl:Range, -2
+    General:UnitName, Degree
     Id, 7
     OtherSettings:AllowMotionCmdToSlave, true
-    Velo:Maximum, 1
+    Velo:Maximum, 20
 
 
 

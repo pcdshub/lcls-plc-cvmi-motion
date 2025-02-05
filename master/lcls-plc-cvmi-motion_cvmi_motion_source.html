@@ -1,21 +1,24 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DUTs &mdash; pcdshub/lcls-plc-cvmi-motion  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
+      <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/docs-versions-menu.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,6 +48,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-cvmi-motion_pragmas.html">Pragmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-cvmi-motion_nc.html">NC Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-cvmi-motion_ethercat.html">EtherCAT Terminals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-cvmi-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-cvmi-motion_links.html">Links</a></li>
 </ul>
@@ -89,15 +93,15 @@
            <div itemprop="articleBody">
              
   <section id="duts">
-<h1>DUTs<a class="headerlink" href="#duts" title="Permalink to this heading"></a></h1>
+<h1>DUTs<a class="headerlink" href="#duts" title="Link to this heading"></a></h1>
 </section>
 <section id="gvls">
-<h1>GVLs<a class="headerlink" href="#gvls" title="Permalink to this heading"></a></h1>
+<h1>GVLs<a class="headerlink" href="#gvls" title="Link to this heading"></a></h1>
 </section>
 <section id="pous">
-<h1>POUs<a class="headerlink" href="#pous" title="Permalink to this heading"></a></h1>
+<h1>POUs<a class="headerlink" href="#pous" title="Link to this heading"></a></h1>
 <section id="main">
-<h2>Main<a class="headerlink" href="#main" title="Permalink to this heading"></a></h2>
+<h2>Main<a class="headerlink" href="#main" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROGRAM</span> <span class="n">Main</span>
 <span class="n">VAR</span>
     <span class="o">//</span> <span class="n">Motors</span>
@@ -162,9 +166,18 @@
 <span class="o">//</span>    <span class="n">nEnableMode</span><span class="o">:=</span><span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">ALWAYS</span><span class="p">,</span>
     <span class="n">nHomingMode</span> <span class="o">:=</span> <span class="n">ENUM_EpicsHomeCmd</span><span class="o">.</span><span class="n">ABSOLUTE_SET</span><span class="p">);</span> <span class="o">//</span> <span class="n">Gas</span> <span class="n">Needle</span> <span class="n">Z</span>
 
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;</span>
+ <span class="p">(</span><span class="o">*</span>   <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable:=TIIB[SamplePaddle-EL7041]^STM Status^Status^Digital input 1;</span>
                               <span class="o">.</span><span class="n">bLimitBackwardEnable</span><span class="o">:=</span><span class="n">TIIB</span><span class="p">[</span><span class="n">SamplePaddle</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="mi">07</span>
+    <span class="s1">&#39;}</span>
+    <span class="n">M7</span> <span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">bPowerSelf</span><span class="o">:=</span><span class="n">TRUE</span><span class="p">,</span>
+    <span class="n">nEnableMode</span><span class="o">:=</span><span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span><span class="p">,</span>
+<span class="o">//</span>    <span class="n">nEnableMode</span><span class="o">:=</span><span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">ALWAYS</span><span class="p">,</span>
+    <span class="n">nHomingMode</span> <span class="o">:=</span> <span class="n">ENUM_EpicsHomeCmd</span><span class="o">.</span><span class="n">ABSOLUTE_SET</span><span class="p">);</span> <span class="o">//</span> <span class="n">Sample</span> <span class="n">Paddle</span>
+<span class="o">*</span><span class="p">)</span>
+<span class="o">//</span><span class="n">air</span> <span class="n">attenuator</span> <span class="n">experiment</span> <span class="n">setup</span> <span class="n">axis</span> <span class="mi">7</span> <span class="n">without</span> <span class="n">limit</span> <span class="n">switches</span> <span class="ow">and</span> <span class="n">rotation</span> <span class="n">motor</span> <span class="mi">01</span><span class="o">/</span><span class="mi">2025</span>
+ <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
         <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="mi">07</span>
     <span class="s1">&#39;}</span>
     <span class="n">M7</span> <span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">bPowerSelf</span><span class="o">:=</span><span class="n">TRUE</span><span class="p">,</span>
@@ -220,30 +233,30 @@
     <span class="o">//</span> <span class="n">LED</span> <span class="n">Channels</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 1^PWM output&#39;</span><span class="p">}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
-            <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">01</span>
-            <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">01</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
     <span class="s1">&#39;}</span>
     <span class="n">bLedOutput1</span> <span class="p">:</span> <span class="n">FB_LED</span><span class="p">;</span>
 
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.iIlluminatorINT := TIIB[LED_CH1-2_EL2502]^PWM Outputs Channel 2^PWM output&#39;</span><span class="p">}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
-            <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">02</span>
-            <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">02</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
     <span class="s1">&#39;}</span>
     <span class="n">bLedOutput2</span> <span class="p">:</span> <span class="n">FB_LED</span><span class="p">;</span>
 
 
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.iIlluminatorINT := TIIB[LED_CH3-4_EL2502]^PWM Outputs Channel 1^PWM output&#39;</span><span class="p">}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
-            <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">03</span>
-            <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">03</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
     <span class="s1">&#39;}</span>
     <span class="n">bLedOutput3</span> <span class="p">:</span> <span class="n">FB_LED</span><span class="p">;</span>
 
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.iIlluminatorINT := TIIB[LED_CH3-4_EL2502]^PWM Outputs Channel 2^PWM output&#39;</span><span class="p">}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
-            <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">04</span>
-            <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">TMO</span><span class="p">:</span><span class="n">CVMI</span><span class="p">:</span><span class="n">LED</span><span class="p">:</span><span class="mi">04</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">io</span>
     <span class="s1">&#39;}</span>
     <span class="n">bLedOutput4</span> <span class="p">:</span> <span class="n">FB_LED</span><span class="p">;</span>
 <span class="n">END_VAR</span>
@@ -259,6 +272,10 @@
     <span class="n">M6</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="o">//</span> <span class="n">Sample</span> <span class="n">Paddle</span>
     <span class="n">M7</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="o">//</span><span class="n">air</span> <span class="n">attenuator</span> <span class="n">experiment</span> <span class="n">uses</span> <span class="n">M7</span> <span class="k">as</span> <span class="n">rotation</span> <span class="n">motor</span> <span class="n">without</span> <span class="n">limit</span> <span class="n">switches</span> <span class="mi">01</span><span class="o">/</span><span class="mi">2025</span>
+    <span class="n">M7</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="n">M7</span><span class="o">.</span><span class="n">bLimitForwardEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+
     <span class="o">//</span> <span class="n">KTOF</span>
     <span class="n">M8</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">M9</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
@@ -304,7 +321,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2025, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
